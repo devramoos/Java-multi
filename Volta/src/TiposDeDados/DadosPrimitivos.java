@@ -1,12 +1,14 @@
 package TiposDeDados;
 
 public class DadosPrimitivos {
-    static void main(String[]arguments) {
-        string naruto = "Naruto";
-        int idade = 16;
+    public static void main(String[] args) {
+        int idade = 19;
+        double altura = 1.65;
         char inicial = 'N';
-        boolean vivioumorto = true;
-        long saldoBancario = 14567;
-
+        boolean vivoOuMorto = true;
+        long SaldoBancario = 932554L;
+        System.out.println("Minha inicial é: " + inicial);
+        System.out.println("Minha idade é: " + idade);
+        System.out.println("Meu saldo bancário = " + SaldoBancario);
     }
-}
+};
