@@ -1,0 +1,311 @@
+# Rodrigo Ramos — Estudos em Java ☕📚
+
+Este repositório é meu caderno de estudos em Java. Sempre que eu aprender um conceito novo, eu adiciono script e aqui um exemplo curto.
+
+---
+
+## Java Conceitos
+
+1) Dados Primitivos
+```java
+int idade = 22;
+double altura = 1.75;
+boolean vivoOuMorto = true;
+long bilhao = 1_000_000_000L;
+char letra = 'A';
+
+2) Dados Não Primitivos
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+String nome = "Rodrigo";
+
+int[] sequencia1 = new int[5];
+int[][] sequencia2 = new int[5][5];
+
+Scanner cdt = new Scanner(System.in);
+
+System.out.println("Olá!");
+
+ArrayList<String> lista = new ArrayList<>();
+lista.add("Java");
+
+3) Estruturas de Repetição
+While
+int i = 0;
+
+while (i < 5) {
+    System.out.println("i = " + i);
+    i++;
+}
+
+For
+for (int j = 0; j <= 5; j++) {
+    System.out.println("j = " + j);
+}
+
+Do-While
+int k = 0;
+
+do {
+    System.out.println("k = " + k);
+    k++;
+} while (k < 5);
+
+4) Condicionais (Switch)
+int opcao = 2;
+
+switch (opcao) {
+    case 1:
+        System.out.println("Opção 1");
+        break;
+    case 2:
+        System.out.println("Opção 2");
+        break;
+    default:
+        System.out.println("Opção inválida");
+        break;
+}
+
+Programação Orientada a Objetos (POO)
+5) Classe e Métodos
+public class Palavras {
+
+    public void hello() {
+        System.out.println("Hello");
+    }
+
+    public String helloComRetorno() {
+        return "Hello!";
+    }
+
+    public int valor(int valorMenos, int outroValor) {
+        return valorMenos - outroValor;
+    }
+}
+
+6) Herança + Override
+public class ResultadoDePalavras extends Palavras {
+
+    @Override
+    public void hello() {
+        System.out.println("Hello people");
+    }
+}
+
+7) Interface
+public interface Valores {
+    String getNomeFigura();
+    int getArea();
+    int getPerimetro();
+}
+
+8) Construtor
+public class Pessoa {
+    String nome;
+
+    public Pessoa(String nome) {
+        this.nome = nome;
+    }
+}
+
+9) Classe Abstrata
+public abstract class Animal {
+    public abstract void som();
+}
+
+10) Encapsulamento (Getters e Setters)
+public class Conta {
+    private double saldo;
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+}
+
+11) Enum
+public enum Status {
+    ATIVO,
+    INATIVO
+}
+
+12) Interfaces x Classes Abstratas
+// Interface: define "o que" a classe deve fazer (contrato)
+interface Autenticavel {
+    void autenticar(String senha);
+}
+
+// Classe abstrata: pode ter regras prontas + obriga métodos
+abstract class Usuario {
+    protected String nome;
+
+    public Usuario(String nome) {
+        this.nome = nome;
+    }
+
+    public void mostrarNome() { // método concreto (já pronto)
+        System.out.println("Usuário: " + nome);
+    }
+
+    public abstract void acessarSistema(); // obriga implementação
+}
+
+// Uma classe pode "extends" 1 classe e "implements" várias interfaces
+class Admin extends Usuario implements Autenticavel {
+
+    public Admin(String nome) {
+        super(nome);
+    }
+
+    @Override
+    public void acessarSistema() {
+        System.out.println("Admin acessou o sistema.");
+    }
+
+    @Override
+    public void autenticar(String senha) {
+        System.out.println("Autenticando com senha: " + senha);
+    }
+}
+
+13) Super Classes x Sub Classes
+class ContaBancaria { // Superclasse
+    protected double saldo;
+
+    public void depositar(double valor) {
+        saldo += valor;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+}
+
+class ContaPoupanca extends ContaBancaria { // Subclasse
+    public void renderJuros(double taxa) {
+        saldo += saldo * taxa;
+    }
+}
+
+14) Herança múltipla (conceito)
+// Java NÃO permite herança múltipla de CLASSES:
+// class A {}
+// class B {}
+// class C extends A, B {} // ❌ não existe em Java
+
+// Mas permite "múltiplas heranças" via INTERFACES:
+interface Corredor {
+    void correr();
+}
+
+interface Nadador {
+    void nadar();
+}
+
+class Triatleta implements Corredor, Nadador {
+    public void correr() {
+        System.out.println("Correndo...");
+    }
+
+    public void nadar() {
+        System.out.println("Nadando...");
+    }
+}
+
+15) Overload (sobrecarga) de construtores e métodos
+class Calculadora {
+
+    // Sobrecarga de métodos (mesmo nome, parâmetros diferentes)
+    public int somar(int a, int b) {
+        return a + b;
+    }
+
+    public double somar(double a, double b) {
+        return a + b;
+    }
+}
+
+class Cliente {
+    String nome;
+    int idade;
+
+    // Sobrecarga de construtores
+    public Cliente(String nome) {
+        this.nome = nome;
+        this.idade = 0;
+    }
+
+    public Cliente(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+}
+
+16) Referência x Valor (toString, equals, etc.)
+// Tipos primitivos comparados por VALOR
+int a = 10;
+int b = 10;
+System.out.println(a == b); // true
+
+// Objetos são comparados por REFERÊNCIA (endereço na memória)
+String s1 = new String("Java");
+String s2 = new String("Java");
+
+System.out.println(s1 == s2);       // false (referências diferentes)
+System.out.println(s1.equals(s2));  // true (conteúdo igual)
+
+// Exemplo com classe própria: equals + toString
+class Produto {
+    String nome;
+    double preco;
+
+    public Produto(String nome, double preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{nome='" + nome + "', preco=" + preco + "}";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || this.getClass() != obj.getClass()) return false;
+
+        Produto outro = (Produto) obj;
+        return this.nome.equals(outro.nome) && this.preco == outro.preco;
+    }
+}
+
+// Uso:
+Produto p1 = new Produto("Mouse", 50.0);
+Produto p2 = new Produto("Mouse", 50.0);
+
+System.out.println(p1);            // chama toString()
+System.out.println(p1.equals(p2)); // true (conteúdo igual)
+
+17) Final (variáveis, métodos e classes)
+class ExemploFinal {
+
+    // final em variável: não pode mudar o valor
+    final int MAX_TENTATIVAS = 3;
+
+    // final em método: não pode ser sobrescrito (override) na subclasse
+    public final void imprimir() {
+        System.out.println("Método final");
+    }
+}
+
+// final em classe: não pode ser herdada
+final class PessoaFinal {
+    String nome;
+}
+
+// class Filho extends PessoaFinal {} // ❌ não pode herdar de classe final
