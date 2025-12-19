@@ -1,38 +1,46 @@
-☕ Guia de Estudos: Linguagem Java
-Estudante: Rodrigo Ramos
-Objetivo: Repositório pessoal e caderno de consultas técnicas.
-________________________________________
-1. Variáveis e Tipos de Dados
-1.1. Dados Primitivos
-Os tipos primitivos são os blocos básicos de construção e armazenam valores simples diretamente na memória.
-Java
+# ☕ Guia de Estudos: Linguagem Java  
+**Estudante:** Rodrigo Ramos  
+**Objetivo:** Repositório pessoal e caderno de consultas técnicas.
+
+---
+
+## 1. Variáveis e Tipos de Dados
+
+### 1.1. Dados Primitivos
+Os tipos primitivos armazenam valores simples diretamente na memória.
+
+```java
 int idade = 22;                       // Inteiros
-double altura = 1.75;                 // Decimais de precisão dupla
-boolean vivoOuMorto = true;           // Valores lógicos (true/false)
-long bilhao = 1_000_000_000L;         // Inteiros de grande escala
-char letra = 'A';                     // Único caractere
+double altura = 1.75;                 // Decimais
+boolean vivoOuMorto = true;           // true/false
+long bilhao = 1_000_000_000L;         // Inteiros grandes
+char letra = 'A';                     // Caractere único
 1.2. Dados Não Primitivos (Objetos e Referências)
 Tipos que fazem referência a objetos e possuem métodos próprios.
-Java
+
+java
+Copiar código
 import java.util.ArrayList;
 import java.util.Scanner;
 
-String nome = "Rodrigo";               // Cadeia de caracteres
-int[] sequencia1 = new int[5];         // Array unidimensional
-int[][] sequencia2 = new int[5][5];    // Array bidimensional
+String nome = "Rodrigo";               // String
+int[] sequencia1 = new int[5];         // Array 1D
+int[][] sequencia2 = new int[5][5];    // Array 2D
 
-// Entrada de dados e Coleções
-Scanner cdt = new Scanner(System.in);
+Scanner cdt = new Scanner(System.in);  // Entrada de dados
+
 ArrayList<String> lista = new ArrayList<>();
 lista.add("Java");
-________________________________________
 2. Estruturas de Controle e Repetição
 2.1. Estruturas de Repetição (Loops)
-Utilizadas para executar um bloco de código múltiplas vezes enquanto uma condição for verdadeira.
-•	While: Verifica a condição antes de executar.
-•	For: Ideal quando se sabe o número exato de repetições.
-•	Do-While: Garante que o código seja executado pelo menos uma vez.
-Java
+While: verifica antes
+
+For: ideal quando sabe o número de repetições
+
+Do-While: executa pelo menos uma vez
+
+java
+Copiar código
 // While
 int i = 0;
 while (i < 5) {
@@ -52,9 +60,12 @@ do {
     k++;
 } while (k < 5);
 2.2. Condicionais (Switch)
-Ideal para múltiplas escolhas baseadas em uma única variável.
-Java
+Ideal para múltiplas escolhas.
+
+java
+Copiar código
 int opcao = 2;
+
 switch (opcao) {
     case 1:
         System.out.println("Opção 1 selecionada");
@@ -66,27 +77,30 @@ switch (opcao) {
         System.out.println("Opção inválida");
         break;
 }
-________________________________________
 3. Programação Orientada a Objetos (POO)
 3.1. Classes e Métodos
-A base de qualquer aplicação Java. Métodos podem ou não retornar valores.
-Java
+Métodos podem ou não retornar valores.
+
+java
+Copiar código
 public class Palavras {
     public void hello() {
         System.out.println("Hello");
     }
-    
+
     public String helloComRetorno() {
         return "Hello!";
     }
-    
+
     public int calcularDiferenca(int v1, int v2) {
         return v1 - v2;
     }
 }
 3.2. Herança e Polimorfismo (@Override)
-Permite que uma classe herde atributos e comportamentos de outra, podendo sobrescrever métodos.
-Java
+Uma classe herda outra e pode sobrescrever métodos.
+
+java
+Copiar código
 public class ResultadoDePalavras extends Palavras {
     @Override
     public void hello() {
@@ -94,22 +108,26 @@ public class ResultadoDePalavras extends Palavras {
     }
 }
 3.3. Abstração: Interfaces e Classes Abstratas
-•	Interface: Define um contrato (o que fazer).
-•	Classe Abstrata: Uma "planta" que não pode ser instanciada, podendo conter métodos prontos ou abstratos.
-Java
+Interface: contrato (o que fazer)
+
+Classe abstrata: base que não pode ser instanciada
+
+java
+Copiar código
 public interface Valores {
     String getNomeFigura();
     int getArea();
 }
 
 public abstract class Animal {
-    public abstract void som(); // Método sem corpo, deve ser implementado pelas filhas
+    public abstract void som();
 }
-________________________________________
 4. Conceitos Avançados e Organização
 4.1. Encapsulamento
-Proteção de dados usando modificadores de acesso (private) e métodos Getters e Setters.
-Java
+Protege dados com private + getters/setters.
+
+java
+Copiar código
 public class Conta {
     private double saldo;
 
@@ -117,27 +135,145 @@ public class Conta {
     public void setSaldo(double saldo) { this.saldo = saldo; }
 }
 4.2. Construtores e Enums
-Java
-// Construtor: Inicializa o objeto
+java
+Copiar código
+// Construtor
 public class Pessoa {
     String nome;
     public Pessoa(String nome) { this.nome = nome; }
 }
 
-// Enum: Conjunto de constantes fixas
+// Enum
 public enum Status { ATIVO, INATIVO }
 4.3. Comparação: Referência vs. Valor
-Em Java, tipos primitivos comparam valores. Objetos comparam o endereço de memória (referência), por isso usamos .equals().
-Java
+Objetos: == compara referência, .equals() compara conteúdo.
+
+java
+Copiar código
 String s1 = new String("Java");
 String s2 = new String("Java");
 
-System.out.println(s1 == s2);      // false (endereços diferentes)
-System.out.println(s1.equals(s2)); // true (conteúdo igual)
+System.out.println(s1 == s2);      // false (referência)
+System.out.println(s1.equals(s2)); // true  (conteúdo)
 4.4. Modificador Final
-•	Variável: Torna-se uma constante.
-•	Método: Impede que seja sobrescrito.
-•	Classe: Impede que seja herdada.
-Java
+variável: constante
+
+método: impede sobrescrita
+
+classe: impede herança
+
+java
+Copiar código
 final class Inalteravel {
-    final int VALOR = 10;}
+    final int VALOR = 10;
+}
+5. Novos Aprendizados (adicionados)
+5.1. Método main correto (ponto de entrada do programa)
+Para rodar no Java, o main precisa ser exatamente assim:
+
+java
+Copiar código
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Rodando!");
+    }
+}
+5.2. Coleções: List, ArrayList e LinkedList
+List é a interface (contrato)
+
+ArrayList e LinkedList são implementações
+
+java
+Copiar código
+import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+List<String> a1 = new ArrayList<>();
+List<String> l1 = new LinkedList<>();
+
+a1.add("Conta");
+l1.add("Movimentacao");
+5.3. Scanner no console (evitar bug do ENTER)
+Uma forma simples e estável é ler tudo com nextLine() e converter:
+
+java
+Copiar código
+import java.util.Scanner;
+
+Scanner sc = new Scanner(System.in);
+
+System.out.print("Digite um numero: ");
+int opcao = Integer.parseInt(sc.nextLine());
+
+System.out.print("Digite um texto: ");
+String nome = sc.nextLine();
+5.4. Interface na prática (padronizar listar/remover)
+Criando um contrato para qualquer item do sistema ter id() e linha():
+
+java
+Copiar código
+public interface registravel {
+    String id();
+    String linha();
+}
+5.5. Herança aplicada (classe base)
+Quando duas classes compartilham coisas em comum, cria-se uma base.
+
+java
+Copiar código
+public abstract class itemBase implements registravel {
+    protected String descricao;
+
+    protected itemBase(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() { return descricao; }
+}
+5.6. Enum aplicado (padronizar valores)
+Enums ajudam a evitar texto solto e erro de digitação.
+
+java
+Copiar código
+public enum Grupo { RECEITA, DESPESA, CUSTO, IMPOSTO, OUTRO }
+public enum Natureza { ENTRADA, SAIDA }
+Uso:
+
+java
+Copiar código
+Grupo g = Grupo.RECEITA;
+Natureza n = Natureza.SAIDA;
+5.7. Record (estrutura curta para carregar dados)
+record é um pacote de dados pronto (construtor + getters + equals + toString).
+
+java
+Copiar código
+public record cadastroConta(String codigo, String descricao) {}
+Uso:
+
+java
+Copiar código
+cadastroConta dto = new cadastroConta("1.01", "Caixa");
+System.out.println(dto.codigo());
+System.out.println(dto.descricao());
+Obs.: record não herda de outras classes (é ótimo como DTO).
+
+5.8. Remover item em lista (lógica prática)
+Remover pelo índice encontrado (mais confiável):
+
+java
+Copiar código
+import java.util.ArrayList;
+
+ArrayList<String> lista = new ArrayList<>();
+lista.add("A");
+lista.add("B");
+lista.add("C");
+
+for (int i = 0; i < lista.size(); i++) {
+    if (lista.get(i).equals("B")) {
+        lista.remove(i);
+        break;
+    }
+}
