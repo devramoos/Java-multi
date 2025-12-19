@@ -19,7 +19,6 @@ char letra = 'A';                     // Caractere único
 Tipos que fazem referência a objetos e possuem métodos próprios.
 
 java
-Copiar código
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -40,7 +39,6 @@ For: ideal quando sabe o número de repetições
 Do-While: executa pelo menos uma vez
 
 java
-Copiar código
 // While
 int i = 0;
 while (i < 5) {
@@ -63,7 +61,6 @@ do {
 Ideal para múltiplas escolhas.
 
 java
-Copiar código
 int opcao = 2;
 
 switch (opcao) {
@@ -82,7 +79,6 @@ switch (opcao) {
 Métodos podem ou não retornar valores.
 
 java
-Copiar código
 public class Palavras {
     public void hello() {
         System.out.println("Hello");
@@ -100,7 +96,6 @@ public class Palavras {
 Uma classe herda outra e pode sobrescrever métodos.
 
 java
-Copiar código
 public class ResultadoDePalavras extends Palavras {
     @Override
     public void hello() {
@@ -113,7 +108,6 @@ Interface: contrato (o que fazer)
 Classe abstrata: base que não pode ser instanciada
 
 java
-Copiar código
 public interface Valores {
     String getNomeFigura();
     int getArea();
@@ -127,7 +121,6 @@ public abstract class Animal {
 Protege dados com private + getters/setters.
 
 java
-Copiar código
 public class Conta {
     private double saldo;
 
@@ -136,7 +129,6 @@ public class Conta {
 }
 4.2. Construtores e Enums
 java
-Copiar código
 // Construtor
 public class Pessoa {
     String nome;
@@ -149,7 +141,6 @@ public enum Status { ATIVO, INATIVO }
 Objetos: == compara referência, .equals() compara conteúdo.
 
 java
-Copiar código
 String s1 = new String("Java");
 String s2 = new String("Java");
 
@@ -163,7 +154,6 @@ método: impede sobrescrita
 classe: impede herança
 
 java
-Copiar código
 final class Inalteravel {
     final int VALOR = 10;
 }
@@ -172,7 +162,6 @@ final class Inalteravel {
 Para rodar no Java, o main precisa ser exatamente assim:
 
 java
-Copiar código
 public class Main {
     public static void main(String[] args) {
         System.out.println("Rodando!");
@@ -184,7 +173,6 @@ List é a interface (contrato)
 ArrayList e LinkedList são implementações
 
 java
-Copiar código
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -198,7 +186,6 @@ l1.add("Movimentacao");
 Uma forma simples e estável é ler tudo com nextLine() e converter:
 
 java
-Copiar código
 import java.util.Scanner;
 
 Scanner sc = new Scanner(System.in);
@@ -212,7 +199,6 @@ String nome = sc.nextLine();
 Criando um contrato para qualquer item do sistema ter id() e linha():
 
 java
-Copiar código
 public interface registravel {
     String id();
     String linha();
@@ -221,7 +207,6 @@ public interface registravel {
 Quando duas classes compartilham coisas em comum, cria-se uma base.
 
 java
-Copiar código
 public abstract class itemBase implements registravel {
     protected String descricao;
 
@@ -235,25 +220,21 @@ public abstract class itemBase implements registravel {
 Enums ajudam a evitar texto solto e erro de digitação.
 
 java
-Copiar código
 public enum Grupo { RECEITA, DESPESA, CUSTO, IMPOSTO, OUTRO }
 public enum Natureza { ENTRADA, SAIDA }
 Uso:
 
 java
-Copiar código
 Grupo g = Grupo.RECEITA;
 Natureza n = Natureza.SAIDA;
 5.7. Record (estrutura curta para carregar dados)
 record é um pacote de dados pronto (construtor + getters + equals + toString).
 
 java
-Copiar código
 public record cadastroConta(String codigo, String descricao) {}
 Uso:
 
 java
-Copiar código
 cadastroConta dto = new cadastroConta("1.01", "Caixa");
 System.out.println(dto.codigo());
 System.out.println(dto.descricao());
@@ -263,7 +244,6 @@ Obs.: record não herda de outras classes (é ótimo como DTO).
 Remover pelo índice encontrado (mais confiável):
 
 java
-Copiar código
 import java.util.ArrayList;
 
 ArrayList<String> lista = new ArrayList<>();
@@ -276,4 +256,5 @@ for (int i = 0; i < lista.size(); i++) {
         lista.remove(i);
         break;
     }
+
 }
