@@ -4,6 +4,34 @@
 
 ---
 
+## 📌 Sumário
+- [1. Variáveis e Tipos de Dados](#1-variáveis-e-tipos-de-dados)
+  - [1.1. Dados Primitivos](#11-dados-primitivos)
+  - [1.2. Dados Não Primitivos](#12-dados-não-primitivos-objetos-e-referências)
+- [2. Estruturas de Controle e Repetição](#2-estruturas-de-controle-e-repetição)
+  - [2.1. Loops](#21-estruturas-de-repetição-loops)
+  - [2.2. Switch](#22-condicionais-switch)
+- [3. Programação Orientada a Objetos (POO)](#3-programação-orientada-a-objetos-poo)
+  - [3.1. Classes e Métodos](#31-classes-e-métodos)
+  - [3.2. Herança e Polimorfismo](#32-herança-e-polimorfismo-override)
+  - [3.3. Interfaces e Classes Abstratas](#33-abstração-interfaces-e-classes-abstratas)
+- [4. Conceitos Avançados e Organização](#4-conceitos-avançados-e-organização)
+  - [4.1. Encapsulamento](#41-encapsulamento)
+  - [4.2. Construtores e Enums](#42-construtores-e-enums)
+  - [4.3. Referência vs. Valor](#43-comparação-referência-vs-valor)
+  - [4.4. Final](#44-modificador-final)
+- [5. Novos Aprendizados](#5-novos-aprendizados-adicionados)
+  - [5.1. main correto](#51-método-main-correto-ponto-de-entrada-do-programa)
+  - [5.2. List / ArrayList / LinkedList](#52-coleções-list-arraylist-e-linkedlist)
+  - [5.3. Scanner sem bug do ENTER](#53-scanner-no-console-evitar-bug-do-enter)
+  - [5.4. Interface na prática](#54-interface-na-prática-padronizar-listarremover)
+  - [5.5. Herança aplicada](#55-herança-aplicada-classe-base)
+  - [5.6. Enum aplicado](#56-enum-aplicado-padronizar-valores)
+  - [5.7. Record](#57-record-estrutura-curta-para-carregar-dados)
+  - [5.8. Remover item em lista](#58-remover-item-em-lista-lógica-prática)
+
+---
+
 ## 1. Variáveis e Tipos de Dados
 
 ### 1.1. Dados Primitivos
@@ -15,10 +43,11 @@ double altura = 1.75;                 // Decimais
 boolean vivoOuMorto = true;           // true/false
 long bilhao = 1_000_000_000L;         // Inteiros grandes
 char letra = 'A';                     // Caractere único
+
 1.2. Dados Não Primitivos (Objetos e Referências)
+
 Tipos que fazem referência a objetos e possuem métodos próprios.
 
-java
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -30,15 +59,16 @@ Scanner cdt = new Scanner(System.in);  // Entrada de dados
 
 ArrayList<String> lista = new ArrayList<>();
 lista.add("Java");
+
 2. Estruturas de Controle e Repetição
 2.1. Estruturas de Repetição (Loops)
-While: verifica antes
 
-For: ideal quando sabe o número de repetições
+While: verifica a condição antes de executar
+
+For: ideal quando se sabe o número de repetições
 
 Do-While: executa pelo menos uma vez
 
-java
 // While
 int i = 0;
 while (i < 5) {
@@ -57,10 +87,11 @@ do {
     System.out.println("k = " + k);
     k++;
 } while (k < 5);
-2.2. Condicionais (Switch)
-Ideal para múltiplas escolhas.
 
-java
+2.2. Condicionais (Switch)
+
+Ideal para múltiplas escolhas baseadas em uma única variável.
+
 int opcao = 2;
 
 switch (opcao) {
@@ -74,11 +105,12 @@ switch (opcao) {
         System.out.println("Opção inválida");
         break;
 }
+
 3. Programação Orientada a Objetos (POO)
 3.1. Classes e Métodos
-Métodos podem ou não retornar valores.
 
-java
+A base de qualquer aplicação Java. Métodos podem ou não retornar valores.
+
 public class Palavras {
     public void hello() {
         System.out.println("Hello");
@@ -92,87 +124,94 @@ public class Palavras {
         return v1 - v2;
     }
 }
-3.2. Herança e Polimorfismo (@Override)
-Uma classe herda outra e pode sobrescrever métodos.
 
-java
+3.2. Herança e Polimorfismo (@Override)
+
+Permite herdar atributos e comportamentos de outra classe, podendo sobrescrever métodos.
+
 public class ResultadoDePalavras extends Palavras {
     @Override
     public void hello() {
         System.out.println("Hello people (Sobrescrito)");
     }
 }
+
 3.3. Abstração: Interfaces e Classes Abstratas
-Interface: contrato (o que fazer)
 
-Classe abstrata: base que não pode ser instanciada
+Interface: define um contrato (o que fazer)
 
-java
+Classe Abstrata: base que não pode ser instanciada
+
 public interface Valores {
     String getNomeFigura();
     int getArea();
 }
 
 public abstract class Animal {
-    public abstract void som();
+    public abstract void som(); // Método sem corpo, deve ser implementado pelas filhas
 }
+
 4. Conceitos Avançados e Organização
 4.1. Encapsulamento
-Protege dados com private + getters/setters.
 
-java
+Proteção de dados usando modificadores de acesso (private) e métodos Getters e Setters.
+
 public class Conta {
     private double saldo;
 
     public double getSaldo() { return saldo; }
     public void setSaldo(double saldo) { this.saldo = saldo; }
 }
+
 4.2. Construtores e Enums
-java
-// Construtor
+// Construtor: inicializa o objeto
 public class Pessoa {
     String nome;
     public Pessoa(String nome) { this.nome = nome; }
 }
 
-// Enum
+// Enum: conjunto de constantes fixas
 public enum Status { ATIVO, INATIVO }
-4.3. Comparação: Referência vs. Valor
-Objetos: == compara referência, .equals() compara conteúdo.
 
-java
+4.3. Comparação: Referência vs. Valor
+
+Objetos comparam referência (endereço). Use .equals() para comparar conteúdo.
+
 String s1 = new String("Java");
 String s2 = new String("Java");
 
-System.out.println(s1 == s2);      // false (referência)
-System.out.println(s1.equals(s2)); // true  (conteúdo)
+System.out.println(s1 == s2);      // false (referências diferentes)
+System.out.println(s1.equals(s2)); // true (conteúdo igual)
+
 4.4. Modificador Final
+
 variável: constante
 
 método: impede sobrescrita
 
 classe: impede herança
 
-java
 final class Inalteravel {
     final int VALOR = 10;
 }
+
 5. Novos Aprendizados (adicionados)
 5.1. Método main correto (ponto de entrada do programa)
+
 Para rodar no Java, o main precisa ser exatamente assim:
 
-java
 public class Main {
     public static void main(String[] args) {
         System.out.println("Rodando!");
     }
 }
+
 5.2. Coleções: List, ArrayList e LinkedList
+
 List é a interface (contrato)
 
 ArrayList e LinkedList são implementações
 
-java
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -182,10 +221,11 @@ List<String> l1 = new LinkedList<>();
 
 a1.add("Conta");
 l1.add("Movimentacao");
-5.3. Scanner no console (evitar bug do ENTER)
-Uma forma simples e estável é ler tudo com nextLine() e converter:
 
-java
+5.3. Scanner no console (evitar bug do ENTER)
+
+Forma simples: ler tudo com nextLine() e converter.
+
 import java.util.Scanner;
 
 Scanner sc = new Scanner(System.in);
@@ -195,18 +235,23 @@ int opcao = Integer.parseInt(sc.nextLine());
 
 System.out.print("Digite um texto: ");
 String nome = sc.nextLine();
-5.4. Interface na prática (padronizar listar/remover)
-Criando um contrato para qualquer item do sistema ter id() e linha():
 
-java
+
+Dica: esse padrão evita travar quando mistura número + texto.
+
+5.4. Interface na prática (padronizar listar/remover)
+
+Contrato para qualquer item do sistema ter id() e linha():
+
 public interface registravel {
     String id();
     String linha();
 }
-5.5. Herança aplicada (classe base)
-Quando duas classes compartilham coisas em comum, cria-se uma base.
 
-java
+5.5. Herança aplicada (classe base)
+
+Quando classes compartilham campos/métodos, cria-se uma classe base.
+
 public abstract class itemBase implements registravel {
     protected String descricao;
 
@@ -216,34 +261,34 @@ public abstract class itemBase implements registravel {
 
     public String getDescricao() { return descricao; }
 }
-5.6. Enum aplicado (padronizar valores)
-Enums ajudam a evitar texto solto e erro de digitação.
 
-java
+5.6. Enum aplicado (padronizar valores)
+
+Enums evitam texto solto e erro de digitação.
+
 public enum Grupo { RECEITA, DESPESA, CUSTO, IMPOSTO, OUTRO }
 public enum Natureza { ENTRADA, SAIDA }
-Uso:
 
-java
 Grupo g = Grupo.RECEITA;
 Natureza n = Natureza.SAIDA;
+
 5.7. Record (estrutura curta para carregar dados)
+
 record é um pacote de dados pronto (construtor + getters + equals + toString).
 
-java
 public record cadastroConta(String codigo, String descricao) {}
-Uso:
 
-java
 cadastroConta dto = new cadastroConta("1.01", "Caixa");
 System.out.println(dto.codigo());
 System.out.println(dto.descricao());
+
+
 Obs.: record não herda de outras classes (é ótimo como DTO).
 
 5.8. Remover item em lista (lógica prática)
+
 Remover pelo índice encontrado (mais confiável):
 
-java
 import java.util.ArrayList;
 
 ArrayList<String> lista = new ArrayList<>();
@@ -256,5 +301,4 @@ for (int i = 0; i < lista.size(); i++) {
         lista.remove(i);
         break;
     }
-
 }
