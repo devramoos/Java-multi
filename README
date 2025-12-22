@@ -38,11 +38,11 @@
 Os tipos primitivos armazenam valores simples diretamente na memória.
 
 ```java
-int idade = 22;                       // Inteiros
-double altura = 1.75;                 // Decimais
-boolean vivoOuMorto = true;           // true/false
-long bilhao = 1_000_000_000L;         // Inteiros grandes
-char letra = 'A';                     // Caractere único
+int idade = 22;                       
+double altura = 1.75;                 
+boolean vivoOuMorto = true;           
+long bilhao = 1_000_000_000L;         
+char letra = 'A';                     
 
 1.2. Dados Não Primitivos (Objetos e Referências)
 
@@ -51,11 +51,11 @@ Tipos que fazem referência a objetos e possuem métodos próprios.
 import java.util.ArrayList;
 import java.util.Scanner;
 
-String nome = "Rodrigo";               // String
-int[] sequencia1 = new int[5];         // Array 1D
-int[][] sequencia2 = new int[5][5];    // Array 2D
+String nome = "Rodrigo";               
+int[] sequencia1 = new int[5];         
+int[][] sequencia2 = new int[5][5];    
 
-Scanner cdt = new Scanner(System.in);  // Entrada de dados
+Scanner cdt = new Scanner(System.in);  
 
 ArrayList<String> lista = new ArrayList<>();
 lista.add("Java");
